@@ -5,7 +5,7 @@ const Searchbar = () => {
   const [search, setSearch] = useState("dito");
   const [pokemon, setPokemon] = useState();
 
-  const onChangeHandler = e => {
+  const onChangeHandler = (e) => {
     setSearch(e.target.value);
   };
 
@@ -13,7 +13,7 @@ const Searchbar = () => {
     onSearchHandler(search);
   };
 
-  const onSearchHandler = async pokemon => {
+  const onSearchHandler = async (pokemon) => {
     const result = await searchPokemon(pokemon);
     setPokemon(result);
     console.log("pokemon -->", result);

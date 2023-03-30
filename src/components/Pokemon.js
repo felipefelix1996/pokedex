@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pokemon = props => {
+const Pokemon = (props) => {
   const { pokemon } = props;
   return (
     <div>
