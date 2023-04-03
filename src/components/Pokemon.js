@@ -12,7 +12,11 @@ const Pokemon = (props) => {
         <div className="pokemon-card-image">
           <img
             alt={pokemon.name}
-            src={pokemon.sprites.front_default}
+            src={
+              pokemon.name !== "nidoran-m"
+                ? `https://play.pokemonshowdown.com/sprites/xyani/${pokemon.name}.gif`
+                : pokemon.sprites.front_default
+            }
             className="pokemon-image"
           />
         </div>

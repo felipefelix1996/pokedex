@@ -35,7 +35,14 @@ const Searchbar = () => {
         <div>
           <div>Nome: {pokemon.name}</div>
           <div>Peso: {pokemon.weight}</div>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <img
+            src={
+              pokemon.name !== "nidoran-m"
+                ? `https://play.pokemonshowdown.com/sprites/xyani/${pokemon.name}.gif`
+                : pokemon.sprites.front_default
+            }
+            alt={pokemon.name}
+          />
         </div>
       ) : null}
     </div>
