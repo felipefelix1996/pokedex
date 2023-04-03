@@ -21,11 +21,14 @@ const Pokemon = (props) => {
           />
         </div>
         <div className="pokemon-info-name">
-          <h3>{pokemon.name}</h3>
-          <div>{pokemon.id}</div>
+          <div># {pokemon.id}</div>
+          <button className="pokemon-heart-byn" onClick={onHeartClick}>
+            {heart}
+          </button>
         </div>
       </div>
       <div className="pokemon-card-bottom">
+        <h3>{pokemon.name}</h3>
         <div className="pokemon-type">
           {pokemon.types.map((type, index) => {
             return (
@@ -40,9 +43,6 @@ const Pokemon = (props) => {
             );
           })}
         </div>
-        <button className="pokemon-heart-byn" onClick={onHeartClick}>
-          {heart}
-        </button>
       </div>
     </div>
   );
