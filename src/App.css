@@ -1,6 +1,11 @@
 * {
   margin: 0px;
 }
+.container-pokedex {
+  max-width: 1024px;
+  margin: 0 auto;
+  justify-content: center;
+}
 nav {
   height: 100px;
   display: flex;
@@ -11,6 +16,9 @@ nav {
 
 .navbar-img {
   width: 160px;
+}
+.footer-pokedex {
+  background-color: red;
 }
 .searchbar-container {
   display: flex;

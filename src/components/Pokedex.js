@@ -2,8 +2,6 @@ import React from "react";
 import Pokemon from "./Pokemon";
 import Pagination from "./Pagination";
 
-
-
 const Pokedex = (props) => {
   const { pokemons, loading, setPage, page, totalPages } = props;
 
@@ -11,7 +9,6 @@ const Pokedex = (props) => {
     if (page > 0) {
       setPage(page - 1);
     }
-    console.log("volta");
   };
 
   const OnRightClickHandler = () => {
@@ -21,7 +18,7 @@ const Pokedex = (props) => {
   };
   return (
     <div>
-      <div className="pokedex-hedaer">
+      <div className="container-pokedex">
         <h1>Pokedex</h1>
         <div>
           <Pagination

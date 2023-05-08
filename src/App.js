@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { getPokemonData, getPokemons } from "./api";
+import { getPokemonData, getPokemons, searchPokemon } from "./api";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Pokedex from "./components/Pokedex";
 import Searchbar from "./components/Searchbar";
 import { FavoriteProvider } from "./contexts/favoritesContext";
+import Footer from "./components/Footer";
 
 const itensPerPage = 25;
-
+const favoritesKey = "f";
 function App() {
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(0);
   const [pokemons, setPokemons] = useState([]);
+  const [notFoundPokemon, setNotFoundPokemon] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
   const fetchPokemons = async () => {
     try {
       setLoading(true);
       const data = await getPokemons(itensPerPage, itensPerPage * page);
-      const promises = data.results.map(async pokemon => {
+      const promises = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
 
@@ -32,22 +34,53 @@ function App() {
       console.log(err);
     }
   };
-  useEffect(() => {
-    console.log("carregou");
-    fetchPokemons();
-  }, [page]);
 
-  const updateFavoritePokemons = name => {
+  const loadFavoritePokemons = () => {
+    const pokemons =
+      JSON.parse(window.localStorage.getItem(favoritesKey)) || [];
+    setFavorites(pokemons);
+  };
+
+  const updateFavoritePokemons = (name) => {
     const updatedFavorites = [...favorites];
     const favoriteIndex = favorites.indexOf(name);
 
     if (favoriteIndex >= 0) {
-      updatedFavorites.slice(favoriteIndex, 1);
+      updatedFavorites.splice(favoriteIndex, 1);
     } else {
       updatedFavorites.push(name);
     }
-
+    window.localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites));
     setFavorites(updatedFavorites);
+  };
+
+  useEffect(() => {
+    console.log("carregou");
+    loadFavoritePokemons();
+  }, []);
+
+  useEffect(() => {
+    fetchPokemons();
+  }, [page]);
+
+  const onSearchHandler = async (pokemon) => {
+    if (!pokemon) {
+      setNotFoundPokemon(false);
+      return fetchPokemons();
+    }
+
+    setLoading(true);
+    setNotFoundPokemon(false);
+
+    const result = await searchPokemon(pokemon);
+    if (!result) {
+      setNotFoundPokemon(true);
+    } else {
+      setPokemons([result]);
+      setPage(0);
+      setTotalPages(1);
+    }
+    setLoading(false);
   };
   return (
     <div>
@@ -58,14 +91,19 @@ function App() {
         }}
       >
         <Navbar />
-        <Searchbar />
-        <Pokedex
-          pokemons={pokemons}
-          loading={loading}
-          page={page}
-          setPage={setPage}
-          totalPages={totalPages}
-        />
+        <Searchbar onSearch={onSearchHandler} />
+        {notFoundPokemon ? (
+          <div>Nao existe esse pokemon</div>
+        ) : (
+          <Pokedex
+            pokemons={pokemons}
+            loading={loading}
+            page={page}
+            setPage={setPage}
+            totalPages={totalPages}
+          />
+        )}
+        <Footer />
       </FavoriteProvider>
     </div>
   );

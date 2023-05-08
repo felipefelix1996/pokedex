@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import FavoriteContext from "../contexts/favoritesContext";
 
-const Pokemon = props => {
+const Pokemon = (props) => {
   const { favoritePokemons, updateFavoritePokemons } =
     useContext(FavoriteContext);
   const { pokemon } = props;
