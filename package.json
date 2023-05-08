@@ -47,5 +47,10 @@
   },
   "lint-staged": {
     "*.{json,jsonc}": "prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
