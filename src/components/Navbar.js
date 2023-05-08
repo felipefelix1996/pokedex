@@ -1,12 +1,10 @@
 import React from "react";
-
+import logo from "../assets/logo.png";
 const Navbar = () => {
-  const logoimg =
-    "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png";
   return (
-    <nav>
-      <div>
-        <img src={logoimg} alt="pokedex-log.svg" className="navbar-img" />
+    <nav className="navbar-pokedex">
+      <div className="container-pokedex">
+        <img src={logo} alt="pokedex-log.svg" className="navbar-img" />
       </div>
     </nav>
   );
