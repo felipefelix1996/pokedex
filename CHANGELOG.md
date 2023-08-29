@@ -7,4 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- [POKEDEX03] - New layout of pokedex
+- [POKEDEX02] - added pokemon component and pokedex api
 - [POKEDEX01] - added pokemon component and pokedex api
