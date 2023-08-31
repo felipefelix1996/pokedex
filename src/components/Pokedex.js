@@ -2,7 +2,7 @@ import React from "react";
 import Pokemon from "./Pokemon";
 import Pagination from "./Pagination";
 
-const Pokedex = props => {
+const Pokedex = (props) => {
   const { pokemons, loading, setPage, page, totalPages } = props;
 
   const OnLeftClickHandler = () => {

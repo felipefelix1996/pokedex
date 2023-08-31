@@ -21,7 +21,7 @@ function App() {
     try {
       setLoading(true);
       const data = await getPokemons(itensPerPage, itensPerPage * page);
-      const promises = data.results.map(async pokemon => {
+      const promises = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
 
@@ -41,7 +41,7 @@ function App() {
     setFavorites(pokemons);
   };
 
-  const updateFavoritePokemons = name => {
+  const updateFavoritePokemons = (name) => {
     const updatedFavorites = [...favorites];
     const favoriteIndex = favorites.indexOf(name);
 
@@ -63,7 +63,7 @@ function App() {
     fetchPokemons();
   }, [page]);
 
-  const onSearchHandler = async pokemon => {
+  const onSearchHandler = async (pokemon) => {
     if (!pokemon) {
       setNotFoundPokemon(false);
       return fetchPokemons();

@@ -1,4 +1,4 @@
-export const searchPokemon = async pokemon => {
+export const searchPokemon = async (pokemon) => {
   try {
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
 
@@ -24,7 +24,7 @@ export const getPokemons = async (limit, offset) => {
   }
 };
 
-export const getPokemonData = async url => {
+export const getPokemonData = async (url) => {
   try {
     const response = await fetch(url);
 

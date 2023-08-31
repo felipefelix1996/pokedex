@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import FavoriteContext from "../contexts/favoritesContext";
 
-const Pokemon = props => {
+const Pokemon = (props) => {
   const { favoritePokemons, updateFavoritePokemons } =
     useContext(FavoriteContext);
   const { pokemon } = props;
@@ -11,7 +11,7 @@ const Pokemon = props => {
   const heart = favoritePokemons.includes(pokemon.name) ? "❤️" : "🖤";
   const [typePokemon, setTypePokemon] = useState([]);
 
-  const selectTypeTerrain = type => {
+  const selectTypeTerrain = (type) => {
     if (
       type === "grass" ||
       type === "bug" ||
@@ -30,7 +30,7 @@ const Pokemon = props => {
   };
   useEffect(() => {
     const newArry = [];
-    pokemon.types.map(type => {
+    pokemon.types.map((type) => {
       newArry.push(type.type.name);
     });
 
