@@ -121,18 +121,46 @@ nav {
   grid-template-columns: repeat(1, 1fr);
 }
 .pokemon-card {
+  width: 250px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #ccc;
+  border-radius: 0.875rem;
   padding: 8px;
   margin: 8px 8px 0 8px;
+}
+.pokemon-info-name {
+  display: flex;
+  justify-content: space-between;
 }
 
 .pokemon-card-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  height: 100px;
 }
+/*Site terrain 
+  https://wallhere.com/pt/wallpaper/1536141
+  https://www1.flightrising.com/forums/cc/2123378/2#post_25715995
+  */
+/*Terrain*/
+.grass-terrain {
+  background-image: url(https://i.imgur.com/BhjM4oG.gif);
+  background-size: 100%;
+}
+.fire-terrain {
+  background-image: url(https://i.imgur.com/zHb0ydy.gif);
+  background-size: 100%;
+}
+.water-terrain {
+  background-image: url(https://i.pinimg.com/originals/09/d1/db/09d1db9058dd21f852650303192c371f.gif);
+  background-size: 100%;
+}
+/*---------->*/
 .pokemon-image {
   max-width: 90px;
 }
@@ -163,6 +191,10 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: stretch;
+}
+.pokemon-cart-container {
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 48rem) {
